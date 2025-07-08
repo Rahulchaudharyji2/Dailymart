@@ -61,4 +61,26 @@ const createProduct = async (req, res) => {
   }
 };
 
-module.exports = { getPredictions, createProduct };
+
+const getHighRiskProducts=async(req, res)=>{
+  try{
+    const highRiskItems=await Product.find({RiskLevel:"High"})
+    const result=highRiskItems.map(item=>({
+      SKU: item.SKU,
+      StoreID: item.StoreID,
+      stockName: item.stockName,
+      stockUrl: item.stockUrl,
+      ExpiryDate: item.ExpiryDate,
+      StockQty: item.StockQty,
+      AvgDailySales: item.AvgDailySales,
+      DaysRemaining: Math.ceil((new Date(item.ExpiryDate) - new Date()) / (1000 * 60 * 60 * 24)),
+      RiskLevel: item.RiskLevel
+    }))
+    res.json(result);
+  }
+  catch(error){
+    res.status(500).json({ error: error.message });
+  }
+}
+
+module.exports = { getPredictions, createProduct, getHighRiskProducts };
