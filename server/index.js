@@ -1,11 +1,19 @@
-const express = require('express')
-const app = express()
-const port = 3000
+require('dotenv').config()
+const app = require('./app');
+const Database = require('./data-source');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const port = 8080;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// IIFE
+(async() => {
+    try {
+        await Database.connect();
+        console.log('DB Connection Open');
+        app.listen(port, () => {
+            console.log(`server running on port ${port}`);
+        });
+    }
+    catch (err) {
+        console.error(err);
+    }
+})();
