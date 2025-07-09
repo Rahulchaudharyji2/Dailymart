@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+const runInventoryUpdater = require("./src/cron/updateInventory");
+runInventoryUpdater();
 // Error Handler
 
 const inventoryRoutes = require("./src/routes/inventoryRoutes");
