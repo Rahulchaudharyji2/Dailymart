@@ -7,10 +7,14 @@ import Footer from './components/Footer/Footer';
 import Home from './Pages/Home';
 import DealofDay from './Pages/DealofDay';
 import Cart from './Pages/Cart';
+import Ai from "./Pages/Ai"
+import SmartCart from './Pages/SmartCart';
 function App() {
   return (
     <div>
       <Navbar />
+        <SmartCart />
+      <Ai/>
       <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
