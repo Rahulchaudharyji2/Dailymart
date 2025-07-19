@@ -8,7 +8,8 @@ import pandas as pd
 model, label_encoder = train_model()
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])  # CORS for frontend
+CORS(app)  # allow all origins
+ # CORS for frontend
 
 # 🧠 Prediction Endpoint
 @app.route("/predict", methods=["POST"])
