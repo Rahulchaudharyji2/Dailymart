@@ -1,0 +1,120 @@
+.sf-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f3f4fd 0%, #fff8e1 100%);
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+/* Six-card KPI row */
+.sf-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.sf-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.sf-card-icon { font-size: 1.75rem; }
+.sf-card-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.sf-card-label { font-size: 0.85rem; color: #555; }
+
+/* Two-column grid for each section */
+.sf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.sf-card {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Input card styling */
+.sf-input label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.sf-input input,
+.sf-input select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.sf-input button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background .2s;
+}
+.sf-input button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.sf-input button:not(:disabled):hover {
+  background: #303f9f;
+}
+
+/* Donut result card */
+.sf-results .sf-placeholder {
+  text-align: center;
+  color: #777;
+  padding: 3rem 0;
+}
+.sf-kpi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sf-kpi-value {
+  font-size: 2.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+.sf-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.sf-chart-single {
+  width: 100%;
+  text-align: center;
+}
+.sf-chart-label {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Bar & Line chart cards */
+.sf-chart-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+.sf-chart-card .sf-placeholder {
+  text-align: center;
+  color: #777;
+  padding: 2rem 0;
+}

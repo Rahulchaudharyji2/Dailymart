@@ -27,6 +27,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  stockPrice:{
+    type:Number,
+    required:true
+  },
   AvgDailySales: {
     type: Number,
     required: true

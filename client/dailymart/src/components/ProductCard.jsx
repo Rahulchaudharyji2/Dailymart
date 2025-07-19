@@ -1,23 +1,24 @@
-// src/components/ProductCard.jsx
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
+  const { stockName, stockUrl, SKU, storeId, stockPrice } = product;
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    const result = addToCart(product);
-    result.success ? toast.success(result.message) : toast.error(result.message);
-  };
+ const handleAddToCart = () => {
+  console.log('Adding to cart:', product);
+  const result = addToCart(product);
+  result.success ? toast.success(result.message) : toast.error(result.message);
+};
 
   const handleBuyNow = () => {
-    const result = addToCart(product); // optional: ensure it's in cart
+    const result = addToCart(product);
     if (result.success || result.message === 'Item already in cart') {
       toast.info('Redirecting to checkout...');
-      navigate('/cart'); // Or navigate to /checkout if you build that
+      navigate('/cart');
     } else {
       toast.error(result.message);
     }
@@ -26,19 +27,19 @@ const ProductCard = ({ product }) => {
   return (
     <div className="max-w-xs w-full bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-200 flex flex-col justify-between">
       <img
-        src={product.image}
-        alt={product.title}
+        src={stockUrl}
+        alt={stockName}
         className="p-4 h-52 w-full object-contain"
       />
 
       <div className="px-4 flex flex-col flex-grow">
-        <h2 className="text-md font-medium text-gray-800 line-clamp-2">{product.title}</h2>
+        <h2 className="text-md font-medium text-gray-800 line-clamp-2">{stockName}</h2>
 
         <div className="flex items-center mt-2 space-x-1 text-yellow-500 text-sm">
-          {'⭐'.repeat(product.rating || 4)}
+          {'⭐'.repeat(4)}
         </div>
 
-        <p className="text-lg font-bold text-green-600 mt-1">₹{product.price}</p>
+        <p className="text-lg font-bold text-green-600 mt-1">₹{stockPrice}</p>
 
         {/* Buttons */}
         <div className="mt-auto mb-4 grid grid-cols-2 gap-2">

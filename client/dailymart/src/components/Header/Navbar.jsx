@@ -1,13 +1,13 @@
 // src/components/Header/Navbar.jsx
 import React from 'react';
 import { useCart } from '../../context/CartContext';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const { cartItems } = useCart();
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 bg-[#370617] text-white shadow">
-      <div className="text-3xl font-bold">Dailymart</div>
+      <div className="text-3xl font-bold" ><a href="/">Dailymart</a></div>
       <div className="flex gap-6 items-center">
         <a href="/cart" className="relative bg-white text-[#370617] px-4 py-2 rounded-full flex items-center">
           <img
@@ -22,6 +22,7 @@ const Navbar = () => {
             </span>
           )}
         </a>
+        <a href="/admin" className="bg-yellow-400 text-[#370617] px-5 py-2 rounded-full">Admin DashBoard</a>
         <a href="/login" className="bg-yellow-400 text-[#370617] px-5 py-2 rounded-full">Login</a>
       </div>
     </nav>

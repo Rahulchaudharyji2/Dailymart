@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from './Carousel';
 import ProductCard from '../components/ProductCard';
 
 const Home = () => {
-  const sampleProducts = [
-  {
-    id: 1,
-    image: 'https://m.media-amazon.com/images/I/71qB9QESz9L._SX679_.jpg',
-    title: 'Samsung Galaxy M14 5G',
-    price: '12999',
-  },
-  {
-    id: 2,
-    image: 'https://m.media-amazon.com/images/I/51P5Z8P1AML._AC_UF1000,1000_QL80_.jpg',
-    title: 'Apple iPhone 14',
-    price: '69999',
-  },
-]
+  const [deal, setDeal] = useState([]); // ✅ Initialize as an array
+
+  useEffect(() => {
+    const fetchDeal = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/predict/high-risk');
+        const data = await response.json();
+        console.log(data);
+        setDeal(data); // ✅ Must be an array
+      } catch (error) {
+        console.error('Failed to fetch deal of the day:', error);
+      }
+    };
+
+    fetchDeal();
+  }, []);
 
   return (
     <div>
-      {/* Carousel */}
       <Carousel />
 
       {/* Deal of the Day Button */}
@@ -32,11 +33,13 @@ const Home = () => {
           🔥 Deal of the Day
         </a>
       </div>
-      {/* Product Grid */}<div className="p-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {sampleProducts.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+
+      {/* Product Grid */}
+      <div className="p-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {deal.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
     </div>
   );
 };
